@@ -1,23 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import {useState} from 'react';
 
-function App() {
+function Counter(){
+  const [count, setCount] = useState(3);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={() => setCount(count+1)}>Increment</button>
+    </div>
+  );
+}
+
+function Salutare(persoana){
+  return <h1>Salut, {persoana.nume}</h1>
+}
+
+function App(){
+  const isLoggedIn = true;
+  const handleClick = () => {
+    alert('Buton APasat');
+  };
+
+  return(
+    <div>
+      {isLoggedIn ? <h1>Bine ai venit</h1> : <h1>Log</h1>}
+      <button onClick={handleClick}>Click me</button>
+      <Salutare  nume="Rizea" />
+      <Counter/>
+      <p>DDDDDDD</p>
     </div>
   );
 }
