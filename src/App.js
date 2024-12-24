@@ -1,60 +1,42 @@
-import React from 'react';
-import {useState} from 'react';
-
-/*
-function App(){
-  const pas= 3;
-  const [count, setCount] = useState(0);
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-
-
-  const handleIncrement = () => {
-    setCount((prevCount) => {
-      const newcount = prevCount + 1;
-      if (newcount === pas)
-        setIsLoggedIn(false);
-      return newcount;
-    });
-  };
-
-  const handleClick = () => {
-    setCount(0);
-    setIsLoggedIn(true);
-  };
-
-  return(
-    <div>
-      {isLoggedIn ? (
-        <div>
-          <p>Count: {count}</p>
-          <button onClick={handleIncrement}>Increment</button>
-        </div>
-      ) : (
-        <div>
-          <h1>You have been logged out!</h1>
-          <button onClick={handleClick}>Login</button>
-        </div>
-      )}
-    </div>
-  );
-}
-*/
+import React, { useEffect, useState } from 'react';
 
 function App(){
 
   const [inputValue, setInputValue] = useState("");
-  const [listgood, addListGood] = useState([""]);
+  const [listgood, addListGood] = useState([]);
+  const [keyToCheck, setKeyToCheck] = useState("NULL");
+  const [dictionary, addDictionary] = useState({});
 
   const submitHandle = (e) => {
     e.preventDefault();
     if(listgood.includes(inputValue))
       alert("DEJA IN LISTA");
     else{
-      addListGood((prevList) => [...prevList, inputValue+ " "]);
+      addListGood((prevList) => [...prevList, inputValue]);
+      addDictionary((prevDictionary) => ({
+                                      ...prevDictionary, [inputValue]:0,
+      }));
     }
     
     setInputValue("");
   };
+
+  const handleClick= (element) => {
+    addDictionary((prevDict) => ({...prevDict,[element]:1,}));
+    addListGood((prevList) => prevList.filter((item) => item !== element));
+    setKeyToCheck(element);
+  };
+
+  useEffect(() => {
+    console.log("Updated Dict:", dictionary);
+    if(dictionary[keyToCheck]===1)
+      console.log(`${keyToCheck} e 1`);
+  }, [dictionary,keyToCheck]);
+
+  const da = listgood.map((element, ix) => <li key={ix}>{element}
+<button onClick={() => handleClick(element)}>Apasa</button>
+</li>);
+  
 
   return (
     <div>
@@ -65,7 +47,10 @@ function App(){
         </label>
         <button type="submit">Submit</button>
       </form>
-      <p>List : {listgood}</p>
+      <p>List</p>
+      <ul>
+        {da}
+      </ul>
 
     </div>
   );
