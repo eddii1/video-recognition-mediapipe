@@ -6,14 +6,19 @@ function App(){
   const [count, setCount] = useState(0);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
 
-  const checkCounter = () => {
-    if (count === pas-1)
-      setIsLoggedIn(false);
-  };
 
   const handleIncrement = () => {
-    setCount(count+1);
-    checkCounter();
+    setCount((prevCount) => {
+      const newcount = prevCount + 1;
+      if (newcount === pas)
+        setIsLoggedIn(false);
+      return newcount;
+    });
+  };
+
+  const handleClick = () => {
+    setCount(0);
+    setIsLoggedIn(true);
   };
 
   return(
@@ -24,7 +29,10 @@ function App(){
           <button onClick={handleIncrement}>Increment</button>
         </div>
       ) : (
-        <h1>You have been logged out!</h1>
+        <div>
+          <h1>You have been logged out!</h1>
+          <button onClick={handleClick}>Login</button>
+        </div>
       )}
     </div>
   );
