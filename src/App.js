@@ -8,6 +8,13 @@ function App(){
   const [keyToCheck, setKeyToCheck] = useState("NULL");
   const [dictionary, addDictionary] = useState({});
 
+  const handleGlobalClick = (e) => {
+    setClickCount((prevClick) => {
+      const newclick=prevClick+1;
+      return  newclick;
+    })
+  }
+
   const submitHandle = (e) => {
     e.preventDefault();
     if(listgood.includes(inputValue))
@@ -42,6 +49,14 @@ function App(){
 <button onClick={() => handleClick(element)}>Apasa</button>
 </li>);
   
+  useEffect(() => {
+    document.addEventListener("click",handleGlobalClick);
+
+    return () => {
+      document.removeEventListener("click", handleGlobalClick);
+    };
+  }, []);
+  
 
   return (
     <div>
@@ -56,6 +71,8 @@ function App(){
       <ul>
         {da}
       </ul>
+
+      <p>Global clicks: {clickCount}</p>
 
     </div>
   );
