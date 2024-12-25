@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 function App(){
 
   const [inputValue, setInputValue] = useState("");
+  const [clickCount, setClickCount] = useState(0);
   const [listgood, addListGood] = useState([]);
   const [keyToCheck, setKeyToCheck] = useState("NULL");
   const [dictionary, addDictionary] = useState({});
@@ -26,6 +27,10 @@ function App(){
     addListGood((prevList) => prevList.filter((item) => item !== element));
     setKeyToCheck(element);
   };
+
+  useEffect(() => {
+
+  }, [])
 
   useEffect(() => {
     console.log("Updated Dict:", dictionary);
