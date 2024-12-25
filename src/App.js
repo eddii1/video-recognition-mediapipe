@@ -8,7 +8,7 @@ function App(){
   const [keyToCheck, setKeyToCheck] = useState("NULL");
   const [dictionary, addDictionary] = useState({});
 
-  const handleGlobalClick = (e) => {
+  const handleGlobalClick = () => {
     setClickCount((prevClick) => {
       const newclick=prevClick+1;
       return  newclick;
@@ -34,10 +34,6 @@ function App(){
     addListGood((prevList) => prevList.filter((item) => item !== element));
     setKeyToCheck(element);
   };
-
-  useEffect(() => {
-
-  }, [])
 
   useEffect(() => {
     console.log("Updated Dict:", dictionary);
