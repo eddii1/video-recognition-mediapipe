@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+/*
 function App(){
 
   const [inputValue, setInputValue] = useState("");
@@ -74,5 +75,47 @@ function App(){
   );
 }
 
+*/
+
+function App(){
+  const [primulPlayer, setPrimulPlayer] = useState(-1);
+  const [doileaPlayer, setDoileaPlayer] = useState(-1);
+  const [selectedOption, setSelectedOption] = useState("");
+
+  const handleClick = () => {
+    setDoileaPlayer(() => Math.floor(Math.random() * 3));
+  }
+
+  const handleChange = (e) => {
+    const value = e.target.value
+    setSelectedOption(value);
+    if(value === "rock")
+      setPrimulPlayer(0);
+    if(value === "paper")
+      setPrimulPlayer(1);
+    if(value==="scrissors")
+      setPrimulPlayer(2);
+  }
+
+  return (
+      <div>
+        <h1>0 - PIATRA ; 1 - HARTIE ; 2 - FOARFECA</h1>
+        <p>Ce alegi?</p>
+        <select value={selectedOption} onChange={handleChange}>
+          <option value="">Selecteaza o optiune</option>
+          <option value="rock">rock</option>
+          <option value="paper">paper</option>
+          <option value="scrissors">scrissors</option>
+        </select>
+        
+        <p>Primul Player: {primulPlayer}</p>
+
+        <br></br>
+        <button onClick={handleClick}>Apasa</button>
+        <p>Doilea player: {doileaPlayer}</p>
+        {primulPlayer > doileaPlayer && primulPlayer ? <p>ai castigat</p> : <p>ai pierdut</p>}
+      </div>
+  );
+}
 
 export default App;
