@@ -80,10 +80,16 @@ function App(){
 function App(){
   const [primulPlayer, setPrimulPlayer] = useState(-1);
   const [doileaPlayer, setDoileaPlayer] = useState(-1);
+  const [rezultat, setRezultat] = useState("nu");
   const [selectedOption, setSelectedOption] = useState("");
 
   const handleClick = () => {
     setDoileaPlayer(() => Math.floor(Math.random() * 3));
+    if(primulPlayer === -1 || doileaPlayer === -1 )
+      setRezultat("invalid");
+    else if(primulPlayer === doileaPlayer)
+      setRezultat("DRAW");
+
   }
 
   const handleChange = (e) => {
@@ -113,7 +119,7 @@ function App(){
         <br></br>
         <button onClick={handleClick}>Apasa</button>
         <p>Doilea player: {doileaPlayer}</p>
-        {primulPlayer > doileaPlayer && primulPlayer ? <p>ai castigat</p> : <p>ai pierdut</p>}
+        <p>{rezultat}</p>
       </div>
   );
 }
