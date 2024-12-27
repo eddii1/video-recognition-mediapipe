@@ -1,22 +1,20 @@
 import React, { useRef, useEffect, useState } from 'react';
 
 import { Pose } from '@mediapipe/pose';
-import { drawConnectors, drawLandmarks } from '@mediapipe/pose';
+import { drawConnectors, drawLandmarks } from '@mediapipe/drawing_utils';
 
 function App() {
 
   const videoRef = useRef(null);
 
   const canvasRef = useRef(null);
-  const landmarkContainerRef = useRef(null);
 
   useEffect(() => {
     const canvasCtx = canvasRef.current.getContext("2d");
 
     const pose = new Pose({
-      locateFile:(file2) => {
-      return `https://cdn.jsdelivr.net/npm/@mediapipe/pose${file2}`;
-    }
+      locateFile:(file2) => 
+      `https://cdn.jsdelivr.net/npm/@mediapipe/pose/${file2}`,
     });
 
     pose.setOptions({
@@ -24,7 +22,7 @@ function App() {
       smoothLandmarks: true,
       enableSegmentation: false,
       minDetectionConfidence: 0.5,
-      minTrackingCondifence: 0.5,
+      minTrackingConfidence: 0.5,
     });
 
     pose.onResults((results) => {
