@@ -1,35 +1,39 @@
-import React, { useEffect, useState } from 'react';
-
-const options = {
-  rock: 0,
-  paper: 1,
-  scissors: 2,
-};
+import React, { useRef, useEffect, useState } from 'react';
 
 function App() {
-  
-  const [selectedValue, setSelectedValue] = useState("");
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setSelectedValue(value);
-    console.log(Object.keys(options).find((key) => options[key]===1));
+  const [count, setCount] = useState(0);
+  const intervalRef = useRef(null);
 
+  const start = () => {
+    if (intervalRef.current === null){
+      intervalRef.current =
+        setInterval(() => {
+          setCount((count) => count +1); }, 1000);
+    } else {
+      return;
+    }
+  };
+
+  const stop = () => {
+    clearInterval(intervalRef.current);
+    intervalRef.current = null;
   }
 
-  
+  const reset = () => {
+    setCount(0);
+    clearInterval(intervalRef.current);
+    intervalRef.current = null;
+    start();
+  }
+
   return (
     <div>
-      <select value={selectedValue} onChange={handleChange}>
-        <option value="">Select an option</option>
-        {Object.keys(options).map((key) => (
-          <option key={key} value={key}>
-            {key}
-          </option>
-        ))}
-      </select>
-        <p>Selectat: {selectedValue}</p>
-      </div>
+      <p>Count {count}</p>
+      <button onClick={start}>Start timer</button>
+      <button onClick={stop}>Stop</button>
+      <button onClick={reset}>Reset</button>
+    </div>
   );
 }
 
