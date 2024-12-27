@@ -2,37 +2,35 @@ import React, { useRef, useEffect, useState } from 'react';
 
 function App() {
 
-  const [count, setCount] = useState(0);
-  const intervalRef = useRef(null);
+  const [inputValue, setInputValue] = useState(0);
+  
+  const rng = Math.floor(Math.random() * 50);
 
-  const start = () => {
-    if (intervalRef.current === null){
-      intervalRef.current =
-        setInterval(() => {
-          setCount((count) => count +1); }, 1000);
-    } else {
-      return;
+  const handleChange = (e) => {
+    const value=e.target.value;
+    setInputValue(value);
+    console.log(value);
+  }
+
+  const handleSubmit = () => {
+    const strtonb= Number(inputValue)
+    if(strtonb > rng){
+      console.log("prea mare");
     }
-  };
-
-  const stop = () => {
-    clearInterval(intervalRef.current);
-    intervalRef.current = null;
+    if(strtonb < rng){
+      console.log("prea mic");
+    }
+    if(strtonb === rng){
+      console.log(`AI GHICIT NUAMRUL: ${inputValue} `)
+    }
   }
 
-  const reset = () => {
-    setCount(0);
-    clearInterval(intervalRef.current);
-    intervalRef.current = null;
-    start();
-  }
 
   return (
     <div>
-      <p>Count {count}</p>
-      <button onClick={start}>Start timer</button>
-      <button onClick={stop}>Stop</button>
-      <button onClick={reset}>Reset</button>
+      <p>Introdu numarul:</p>
+      <input value={inputValue} onChange={handleChange}></input>
+      <button onClick={handleSubmit}>Submit</button>
     </div>
   );
 }
