@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
 
 import { Pose } from '@mediapipe/pose';
-import { drawConnectors, drawLandmarks } from '@mediapipe/drawing_utils';
+import { drawConnectors, drawLandmarks } from '@mediapipe/pose';
 
 function App() {
 
@@ -11,11 +11,11 @@ function App() {
   const landmarkContainerRef = useRef(null);
 
   useEffect(() => {
-    const canvasCtx = canvasRef.current.getContext('2d');
+    const canvasCtx = canvasRef.current.getContext("2d");
 
     const pose = new Pose({
-      locateFile:(file) => {
-      return `https://cdn.jsdelivr.net/npm/@mediapipe/pose${file}`;
+      locateFile:(file2) => {
+      return `https://cdn.jsdelivr.net/npm/@mediapipe/pose${file2}`;
     }
     });
 
@@ -90,6 +90,8 @@ function App() {
     <div>
         <input type='file' accept='video/*' onChange={handleVideo}></input>
         <video ref={videoRef} controls style={{ width:"640px", height:"360px"}}/>
+        <canvas ref={canvasRef} width="640" height="360" style={{
+          border:"1px solid black", marginTop: "10px"        }} />
     </div>
   );
 }
