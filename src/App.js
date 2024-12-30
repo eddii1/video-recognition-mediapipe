@@ -7,7 +7,7 @@ import About from './pages/About';
 
 function App() {
   return (
-    <div className='bg-blue-200'>
+    <div className="">
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
