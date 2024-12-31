@@ -4,16 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
+
+//require('dotenv').config();
+
+
 // https://firebase.google.com/docs/web/setup#available-libraries
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyB49u4GdyZP0PuXgtwxoYJQ4Gv2vaXqNsQ",
+  apiKey: `${process.env.API_KEY}`,
   authDomain: "authmediapipe.firebaseapp.com",
   projectId: "authmediapipe",
   storageBucket: "authmediapipe.firebasestorage.app",
@@ -24,6 +24,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+console.log(app);
 const analytics = getAnalytics(app);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
