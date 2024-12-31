@@ -9,7 +9,7 @@ function Home(){
         {/* Content */}
         <div className="relative text-2xl text-white flex justify-start pl-20 py-52">
           <p className="text-4xl font-semibold">
-            Think bigger. Build faster.
+            Ergonomics made easy.
           </p>
         </div>
       </div>
