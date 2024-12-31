@@ -9,9 +9,6 @@ import { getAnalytics } from "firebase/analytics";
 
 //require('dotenv').config();
 
-
-// https://firebase.google.com/docs/web/setup#available-libraries
-
 const firebaseConfig = {
   apiKey: `${process.env.API_KEY}`,
   authDomain: "authmediapipe.firebaseapp.com",
