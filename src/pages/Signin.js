@@ -24,12 +24,13 @@ function Signin(){
         signInWithEmailAndPassword(auth, credentials.mail, credentials.pass)
         .then((userCredential)=>{
             const user = userCredential.user;
+            console.log(user);
         })
         .catch((err)=>{
             const errCode=err.code;
             const errMsg=err.message;
         })
-
+        
     }
 
     return (
@@ -38,8 +39,8 @@ function Signin(){
                 <form onSubmit={handleSubmit}>
                     <input id='email' name='mail' type='email' value={credentials.mail} onChange={handleChange} required/>
                     <input id='password' name='pass' type='password' value={credentials.pass} onChange={handleChange} required/>
+                    <button type="submit">Trimite</button>
                 </form>
-                <button type="submit">Trimite</button>
             </label>
         </div>
     );

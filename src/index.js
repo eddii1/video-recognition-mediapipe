@@ -10,7 +10,7 @@ import { getAnalytics } from "firebase/analytics";
 //require('dotenv').config();
 
 const firebaseConfig = {
-  apiKey: `${process.env.API_KEY}`,
+  apiKey: `${process.env.REACT_APP_API_KEY}`,
   authDomain: "authmediapipe.firebaseapp.com",
   projectId: "authmediapipe",
   storageBucket: "authmediapipe.firebasestorage.app",
