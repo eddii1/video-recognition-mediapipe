@@ -1,6 +1,7 @@
 import React from 'react';
-import { getAuth, signInWithEmailAndPassword} from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 function Signin(){
 
@@ -8,6 +9,9 @@ function Signin(){
         mail:'',
         pass:'',
     });
+
+    const navigate = useNavigate();
+
     
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -18,18 +22,22 @@ function Signin(){
         }));
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
         const auth= getAuth();
 
-        signInWithEmailAndPassword(auth, credentials.mail, credentials.pass)
-        .then((userCredential)=>{
-            const user = userCredential.user;
-            console.log(user);
-        })
-        .catch((err)=>{
-            const errCode=err.code;
-            const errMsg=err.message;
-        })
+       try {
+        const userCredentials = await createUserWithEmailAndPassword(
+            auth, credentials.mail, credentials.pass,
+        );
+        console.log('Cont creat', userCredentials.user);
+        navigate('/analyze');
+
+       } catch (err){
+        console.log("err:",err.code, err.message);
+        alert(err.message);
+       }
         
     }
 

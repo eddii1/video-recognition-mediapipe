@@ -2,8 +2,8 @@ import React, { useRef, useEffect, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './pages/Home';
-import About from './pages/About';
-import Signin from './pages/Signin';
+import Analyze from './pages/Analyze';
+import SignUp from './pages/Signin';
 
 
 function App() {
@@ -12,8 +12,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/sign-in" element={<Signin />} />
+          <Route path="/analyze" element={<Analyze />} />
+          <Route path="/sign-up" element={<SignUp />} />
         </Routes>      
     </div>
   );
