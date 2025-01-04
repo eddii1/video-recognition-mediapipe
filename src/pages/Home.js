@@ -12,7 +12,7 @@ function Home(){
 
           <div className="relative text-white flex justify-start pl-32 py-52">
             <p className="text-4xl font-semibold">
-              Ergonomics made easy.
+              Ergonomics made easy
             </p>
           </div>
 
