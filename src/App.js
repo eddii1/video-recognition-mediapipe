@@ -4,6 +4,8 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home';
 import Analyze from './pages/Analyze';
 import SignUp from './pages/SignUp';
+import LogIn from './pages/LogIn';
+import Account from './pages/Account';
 
 
 function App() {
@@ -14,6 +16,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/analyze" element={<Analyze />} />
           <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/log-in" element={<LogIn />} />
+          <Route path="/account" element={<Account />} />
         </Routes>      
     </div>
   );

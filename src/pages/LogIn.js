@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button, Label, TextInput } from "flowbite-react";
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react'
-import { useNavigate} from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
-function SignUp(){
+function LogIn(){
 
     const [credentials, setUserCredentials] = useState({
         mail:'',
@@ -28,29 +28,27 @@ function SignUp(){
 
         const auth= getAuth();
 
-       try {
-        const userCredentials = await createUserWithEmailAndPassword(
-            auth, credentials.mail, credentials.pass,
-        );
-        console.log('Cont creat', userCredentials.user);
-        navigate('/analyze');
-
-       } catch (err){
-        console.log("err:",err.code, err.message);
-        alert(err.message);
-       }
+        signInWithEmailAndPassword(auth, credentials.mail, credentials.pass)
+        .then((userCred) => {
+            const user=userCred.user;
+            navigate("/analyze");
+        })
+        .catch((err) => {
+            alert(err.message);
+        })
         
     }
 
     return (
         <div className='py-10 w-full grid justify-center text-4xl font-semibold'>
 
-            <Label className='text-4xl mb-4 '>Create Account</Label>
+            <Label className='text-4xl mb-4 '>Log in</Label>
 
             <form onSubmit={handleSubmit} className='grid gap-2'>
                 <TextInput id='email' name='mail' type='email' value={credentials.mail} onChange={handleChange} required/>
                 <TextInput id='password' name='pass' type='password' value={credentials.pass} onChange={handleChange} required/>
                 <Button type="submit" color="dark">Trimite</Button>
+                <p className='text-lg font-normal'><Link to="/sign-up">Create account.</Link></p>
 
             </form>
             
@@ -58,4 +56,4 @@ function SignUp(){
     );
 }
 
-export default SignUp;
+export default LogIn;

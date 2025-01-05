@@ -20,15 +20,16 @@ function Analyze(){
   <>
       { isSignedIn ? 
         <div className='p-10 text-3xl'>
-            <p>TE-AI LOGAT CU SUCCES / ESTI LOGAT.</p>
+            <p>LOGGED IN</p>
         </div>
         
         :
 
        <div className='p-10 text-3xl'>
-        <p className='mb-5'>NU TE-AI LOGAT</p>
-        <Button color="dark"><Link to="/sign-up">SIGN IN / UP</Link></Button>
-        </div>}
+          <p className='mb-5'>NOT LOGGED IN</p>
+          <Button color="dark"><Link to="/log-in">Log in</Link></Button>
+        </div>
+        }
     </>
   )
 }
