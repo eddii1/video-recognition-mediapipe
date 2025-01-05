@@ -1,5 +1,6 @@
 import React from 'react';
-import { getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
+import { Button, Label, TextInput } from "flowbite-react";
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
@@ -42,14 +43,14 @@ function SignUp(){
     }
 
     return (
-        <div>
-            <label>Sign In
-                <form onSubmit={handleSubmit}>
-                    <input id='email' name='mail' type='email' value={credentials.mail} onChange={handleChange} required/>
-                    <input id='password' name='pass' type='password' value={credentials.pass} onChange={handleChange} required/>
-                    <button type="submit">Trimite</button>
+        <div className='py-10 w-full flex justify-center'>
+            <Label className='text-2xl mb-5 '>Sign Up
+                <form onSubmit={handleSubmit} className='grid gap-2'>
+                    <TextInput id='email' name='mail' type='email' value={credentials.mail} onChange={handleChange} required/>
+                    <TextInput id='password' name='pass' type='password' value={credentials.pass} onChange={handleChange} required/>
+                    <Button type="submit" color="dark" className='mt-3'>Trimite</Button>
                 </form>
-            </label>
+            </Label>
         </div>
     );
 }
