@@ -43,14 +43,16 @@ function SignUp(){
     }
 
     return (
-        <div className='py-10 w-full flex justify-center'>
-            <Label className='text-2xl mb-5 '>Sign Up
-                <form onSubmit={handleSubmit} className='grid gap-2'>
-                    <TextInput id='email' name='mail' type='email' value={credentials.mail} onChange={handleChange} required/>
-                    <TextInput id='password' name='pass' type='password' value={credentials.pass} onChange={handleChange} required/>
-                    <Button type="submit" color="dark" className='mt-3'>Trimite</Button>
-                </form>
-            </Label>
+        <div className='py-10 w-full grid justify-center text-4xl font-semibold'>
+
+            <Label className='text-4xl mb-4 '>Sign Up</Label>
+
+            <form onSubmit={handleSubmit} className='grid gap-2'>
+                <TextInput id='email' name='mail' type='email' value={credentials.mail} onChange={handleChange} required/>
+                <TextInput id='password' name='pass' type='password' value={credentials.pass} onChange={handleChange} required/>
+                <Button type="submit" color="dark">Trimite</Button>
+            </form>
+            
         </div>
     );
 }

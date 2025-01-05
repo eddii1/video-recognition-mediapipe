@@ -1,6 +1,8 @@
 import React from 'react';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useState } from 'react';
+import { Button } from 'flowbite-react';
+import { Link } from 'react-router-dom';
 
 function Analyze(){
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -15,8 +17,18 @@ function Analyze(){
   })
 
   return (
-    <>
-      { isSignedIn ? <h1>da</h1> : <h1>nu</h1>}
+  <>
+      { isSignedIn ? 
+        <div className='p-10 text-3xl'>
+            <p>TE-AI LOGAT CU SUCCES / ESTI LOGAT.</p>
+        </div>
+        
+        :
+
+       <div className='p-10 text-3xl'>
+        <p className='mb-5'>NU TE-AI LOGAT</p>
+        <Button color="dark"><Link to="/sign-up">SIGN IN / UP</Link></Button>
+        </div>}
     </>
   )
 }
