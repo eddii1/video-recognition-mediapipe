@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { AuthProvider } from "./components/AuthContext";
+import { AuthProvider } from "./AuthContext";
 
 //require('dotenv').config();
 
