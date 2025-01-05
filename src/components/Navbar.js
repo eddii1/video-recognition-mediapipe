@@ -9,7 +9,7 @@ function Navbar() {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/analyze">Analyze</Link></li>
       </ul>
-      <button className='flex items-center justify-end mr-10'><Link to="/sign-in">Sign In</Link></button>
+      <button className='flex items-center justify-end mr-10'><Link to="/sign-up">Sign In</Link></button>
     </nav>
   );
 }

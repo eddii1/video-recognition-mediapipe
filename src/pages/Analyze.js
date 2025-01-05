@@ -1,7 +1,24 @@
 import React from 'react';
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useState } from 'react';
 
 function Analyze(){
-    return <h1 className='text-2xl flex justify-center p-3'>Analyze page</h1>;
-  }
+  const [isSignedIn, setIsSignedIn] = useState(false);
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if ( user ) {
+      setIsSignedIn(true);
+    }
+    else{
+      setIsSignedIn(false);
+    }
+  })
+
+  return (
+    <>
+      { isSignedIn ? <h1>da</h1> : <h1>nu</h1>}
+    </>
+  )
+}
 
 export default Analyze;

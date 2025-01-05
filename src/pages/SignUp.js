@@ -3,7 +3,7 @@ import { getAuth, createUserWithEmailAndPassword} from 'firebase/auth';
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 
-function Signin(){
+function SignUp(){
 
     const [credentials, setUserCredentials] = useState({
         mail:'',
@@ -54,4 +54,4 @@ function Signin(){
     );
 }
 
-export default Signin;
+export default SignUp;
