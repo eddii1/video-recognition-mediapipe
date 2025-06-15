@@ -13,7 +13,7 @@ function LogIn(){
 
     const navigate = useNavigate();
 
-    
+
     const handleChange = (e) => {
         const { name, value } = e.target;
 
@@ -25,17 +25,16 @@ function LogIn(){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         const auth= getAuth();
-
-        signInWithEmailAndPassword(auth, credentials.mail, credentials.pass)
-        .then((userCred) => {
-            const user=userCred.user;
+        
+        try {
+            const userCred = await signInWithEmailAndPassword(auth, credentials.mail, credentials.pass);
+            const user = userCred.user;
             navigate("/analyze");
-        })
-        .catch((err) => {
+        }
+        catch (err) {
             alert(err.message);
-        })
+        }
         
     }
 
