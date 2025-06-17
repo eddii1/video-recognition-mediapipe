@@ -1,0 +1,33 @@
+1. User Interface Improvements
+Show user profile info: Display the logged-in user’s email or name in the navbar.
+Logout button: Add a button to sign out the user.
+Loading spinners: Show a spinner or animation while waiting for authentication or video processing.
+
+--------------------------- DONE mai putin animatia.
+
+2. Forms and State
+Password visibility toggle: Add a button to show/hide the password in your login/signup forms.
+Form validation: Show error messages if the email is invalid or the password is too short.
+Remember me: Add a checkbox to remember the user (store info in localStorage).
+
+3. Navigation
+Protected routes: Only allow access to certain pages if the user is logged in.
+Redirect after login/logout: Automatically send users to the right page after they log in or out.
+
+4. Video Features
+Video preview: Show a preview of the video before uploading.
+Upload progress bar: Show upload progress when sending a video to the backend.
+Video history: List previously uploaded/processed videos for the user.
+
+5. User Experience
+Dark mode toggle: Let users switch between light and dark themes.
+Notifications: Show success/error messages as popups or banners.
+
+6. Data Handling
+Fetch and display data: Use fetch or axios to get data from an API and display it (e.g., a list of videos, user stats).
+Pagination: If you have a list (like video history), add pagination or infinite scroll.
+
+7. Advanced (when you’re ready)
+Drag and drop upload: Let users drag files onto a drop area to upload.
+User settings page: Let users update their profile info or password.
+Comment or rating system: Allow users to comment on or rate processed videos.
