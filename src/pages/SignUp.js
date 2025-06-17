@@ -32,8 +32,8 @@ function SignUp(){
         const userCredentials = await createUserWithEmailAndPassword(
             auth, credentials.mail, credentials.pass,
         );
-        console.log('Cont creat', userCredentials.user);
-        navigate('/analyze');
+        console.log('Cont creeat', userCredentials.user);
+        navigate('/home');
 
        } catch (err){
         console.log("err:",err.code, err.message);
@@ -43,15 +43,17 @@ function SignUp(){
     }
 
     return (
-        <div className='py-10 w-full grid justify-center text-4xl font-semibold'>
+        <div className='py-12 w-full grid justify-center text-4xl font-semibold'>
 
-            <Label className='text-4xl mb-4 '>Create Account</Label>
+            <Label className='text-4xl mb-4 '>Creeaza un cont nou</Label>
 
-            <form onSubmit={handleSubmit} className='grid gap-2'>
+            <form onSubmit={handleSubmit} className='grid gap-1'>
+                <p className='text-lg font-normal'>Email</p>
                 <TextInput id='email' name='mail' type='email' value={credentials.mail} onChange={handleChange} required/>
+                <p className='text-lg font-normal'>Parola</p>
                 <TextInput id='password' name='pass' type='password' value={credentials.pass} onChange={handleChange} required/>
-                <Button type="submit" color="dark">Trimite</Button>
-
+                <Button className='mt-1' type="submit" color="dark">Trimite</Button>
+    
             </form>
             
         </div>

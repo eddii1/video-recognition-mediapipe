@@ -30,7 +30,7 @@ function LogIn(){
         try {
             const userCred = await signInWithEmailAndPassword(auth, credentials.mail, credentials.pass);
             const user = userCred.user;
-            navigate("/analyze");
+        navigate("/analyze");
         }
         catch (err) {
             alert(err.message);
@@ -39,16 +39,17 @@ function LogIn(){
     }
 
     return (
-        <div className='py-10 w-full grid justify-center text-4xl font-semibold'>
+        <div className='py-12 w-full grid justify-center text-4xl font-semibold'>
 
-            <Label className='text-4xl mb-4 '>Log in</Label>
+            <Label className='text-4xl mb-4 '>Intra in contul tau</Label>
 
-            <form onSubmit={handleSubmit} className='grid gap-2'>
+            <form onSubmit={handleSubmit} className='grid gap-1'>
+                <p className='text-lg font-normal'>Email</p>
                 <TextInput id='email' name='mail' type='email' value={credentials.mail} onChange={handleChange} required/>
+                <p className='text-lg font-normal'>Parola</p>
                 <TextInput id='password' name='pass' type='password' value={credentials.pass} onChange={handleChange} required/>
-                <Button type="submit" color="dark">Trimite</Button>
-                <p className='text-lg font-normal'><Link to="/sign-up">Create account.</Link></p>
-
+                <Button className='mt-1' type="submit" color="dark">Trimite</Button>
+                <p className='text-lg font-semibold'><Link to="/sign-up">Creeaza un cont nou</Link></p>
             </form>
             
         </div>

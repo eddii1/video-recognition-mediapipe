@@ -20,14 +20,14 @@ function Analyze(){
   <>
       { isSignedIn ? 
         <div className='py-10 w-full grid justify-center text-4xl '>
-            <p>LOGGED IN</p>
+            <p>Logat</p>
         </div>
         
         :
 
-       <div className='py-10 w-full grid justify-center text-4xl '>
-          <p className='mb-5'>NOT LOGGED IN</p>
-          <Button color="dark"><Link to="/log-in">Log in</Link></Button>
+       <div className='py-10  grid justify-center text-3xl '>
+          <p className='mb-5'>Inregistreaza-te pentru a avea acces</p>
+          <Link to="/log-in"><Button className='w-1/4 mx-auto' color="dark">Log in</Button></Link>
         </div>
         }
     </>

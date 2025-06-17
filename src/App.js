@@ -6,6 +6,7 @@ import Analyze from './pages/Analyze';
 import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import Account from './pages/Account';
+import Test from './pages/test';
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/log-in" element={<LogIn />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/test" element={<Test />} />
         </Routes>      
     </div>
   );

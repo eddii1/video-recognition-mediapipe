@@ -1,5 +1,4 @@
 import { getAuth, signOut } from 'firebase/auth';
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../AuthContext';
 import { Button } from 'flowbite-react';
@@ -14,7 +13,7 @@ function Navbar() {
   })
 
   return (
-    <nav className='bg-white px-14 py-4 border-b border-gray-300 grid grid-cols-2 text-xl '>
+    <nav className='bg-white px-14 py-5 border-b border-gray-300 grid grid-cols-2 text-xl '>
       <ul className='flex  items-center gap-x-10 '>
         <li><Link to="/"><img src='logo192.png' className='w-12'></img></Link></li>
         <li><Link to="/">Home</Link></li>
@@ -22,13 +21,28 @@ function Navbar() {
       </ul>
       {currUser ?  
                 <>
-                  <button className='flex items-center justify-end mr-3'><Link to="/account">Cont</Link></button>
+                  
+                  <div className='flex justify-end gap-10 mr-10'>
+                    <Link to="/account">
+                      {/*
+                    
+                      <button className='flex items-center justify-end mr-3'>Contul tau</button>
+            
+                      */}
+
+                      <p className='mt-1'>{currUser.email}</p>
+                    </Link>
+                    <Button color='dark' onClick={handleClick}>Log Out</Button>
+                  </div>
                 </> 
                 :
                 <>
-                  <button className='flex items-center justify-end mr-10'><Link to="/log-in">Log In</Link></button>
+                  <div className='flex justify-end gap-10 mr-10'>
+                    <button><Link to="/log-in">Log In</Link></button>
+                    <button><Link to="/sign-up">Sign Up</Link></button>
+                  </div>
                 </>
- }
+      }
     </nav>
   );
   
